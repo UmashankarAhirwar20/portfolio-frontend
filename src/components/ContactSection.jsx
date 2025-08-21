@@ -93,7 +93,7 @@ const ContactSection = () => {
                     href="tel:+918349558271"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +91 83495 58271
+                    +91 93099 42969
                   </a>
                 </div>
               </div>
