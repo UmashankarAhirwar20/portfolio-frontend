@@ -1,0 +1,260 @@
+@import "tailwindcss";
+
+/* ================================
+   🎨 Theme Tokens
+   ================================ */
+@theme {
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-card: hsl(var(--card));
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.25s forwards;
+  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.45s forwards;
+  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
+  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.85s forwards;
+  --animate-aurora: aurora 8s ease-in-out infinite;
+}
+
+/* ================================
+   🌌 Keyframes
+   ================================ */
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes meteor-move {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-200px, 200px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* ================================
+   🌅 Theme Variants
+   ================================ */
+@layer base {
+  :root {
+    /* Light Mode */
+    --border: 240 5% 85%;
+    --background: 220 60% 98%;
+    --foreground: 240 10% 10%;
+
+    --primary: 210 90% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --card: 0 0% 100%;
+
+    --aurora-bg: linear-gradient(
+      270deg,
+      #4facfe,
+      #00f2fe,
+      #43e97b,
+      #38f9d7,
+      #fa709a
+    );
+    --aurora-size: 400% 400%;
+  }
+
+  .dark {
+    /* Dark Mode */
+    --border: 240 5% 20%;
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+
+    --primary: 210 90% 65%;
+    --primary-foreground: 240 10% 10%;
+
+    --card: 240 6% 8%;
+
+    --aurora-bg: linear-gradient(
+      270deg,
+      #0f2027,
+      #203a43,
+      #2c5364,
+      #1e3c72,
+      #2a5298
+    );
+    --aurora-size: 400% 400%;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ================================
+   ✨ Utilities
+   ================================ */
+@layer utilities {
+  .aurora-button {
+    @apply px-6 py-2 rounded-full font-medium transition-all duration-300 
+           text-primary-foreground;
+    background: linear-gradient(
+      90deg,
+      #4facfe,
+      #00f2fe,
+      #43e97b,
+      #38f9d7,
+      #fa709a
+    );
+    background-size: 400% 400%;
+    animation: var(--animate-aurora);
+    box-shadow: 0 0 12px rgba(79, 172, 254, 0.5),
+      0 0 24px rgba(250, 112, 154, 0.4);
+  }
+  .aurora-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(67, 233, 123, 0.6),
+      0 0 30px rgba(250, 112, 154, 0.6);
+  }
+  .aurora-button:active {
+    transform: scale(0.95);
+  }
+
+  /* Aurora Layer */
+  .aurora-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 20% 30%,
+        rgba(0, 255, 128, 0.4),
+        transparent 70%
+      ),
+      radial-gradient(
+        circle at 80% 40%,
+        rgba(0, 200, 255, 0.35),
+        transparent 70%
+      ),
+      radial-gradient(
+        circle at 50% 70%,
+        rgba(180, 70, 255, 0.25),
+        transparent 70%
+      );
+    background-blend-mode: screen;
+    filter: blur(120px);
+    animation: aurora-wave 8s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes aurora-wave {
+    0% {
+      transform: translate(-10%, -10%) scale(1.05) rotate(0deg);
+    }
+    50% {
+      transform: translate(5%, 5%) scale(1.1) rotate(5deg);
+    }
+    100% {
+      transform: translate(-10%, -10%) scale(1.05) rotate(-5deg);
+    }
+  }
+
+  .aurora-star {
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.6);
+    animation: twinkle ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  .aurora-meteor {
+    position: absolute;
+    width: 120px; /* length of meteor */
+    height: 2px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), transparent);
+    border-radius: 9999px;
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.2);
+
+    /* keep it slanted always */
+    transform: rotate(45deg);
+
+    animation: meteor-shoot 1s linear infinite;
+  }
+
+  /* diagonal movement only */
+  @keyframes meteor-shoot {
+    0% {
+      transform: translate(0, 0) rotate(45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(400px, 400px) rotate(45deg); /* moves down-right */
+      opacity: 0;
+    }
+  }
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+.font-dancing {
+  font-family: "Dancing Script", cursive;
+}
