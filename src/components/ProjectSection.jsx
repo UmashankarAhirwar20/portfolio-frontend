@@ -8,8 +8,9 @@ const projects = [
       "A full-stack MERN web app for filing and tracking judicial complaints with role-based access, authentication, and admin dashboard.",
     image: "/assets/Judial.png",
     tags: ["React", "Redux", "Node.js", "MongoDB"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/yourusername/judicial-portal",
+    demoUrl: "/notFound",
+    githubUrl:
+      "https://github.com/UmashankarAhirwar20/Judial_Complaint_Portal/tree/main",
   },
   {
     id: 2,
@@ -18,8 +19,8 @@ const projects = [
       "A responsive NGO website inspired by Tata Trusts featuring donations (QR & standard), events, media, and SEO optimization.",
     image: "/assets/NGO.png",
     tags: ["Next.js", "TailwindCSS", "MongoDB"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/yourusername/ngo-website",
+    demoUrl: "/notFound",
+    githubUrl: "/notFound",
   },
   {
     id: 3,
@@ -28,8 +29,8 @@ const projects = [
       "My personal portfolio showcasing projects, skills, and experience with animations, dark/light themes, and responsive design.",
     image: "/assets/portfolioImg.png",
     tags: ["React", "TailwindCSS"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/yourusername/portfolio",
+    demoUrl: "https://portfolio-frontend-chi-eight.vercel.app/",
+    githubUrl: "https://github.com/UmashankarAhirwar20/portfolio-frontend",
   },
 ];
 
