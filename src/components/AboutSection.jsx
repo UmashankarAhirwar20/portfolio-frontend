@@ -39,7 +39,7 @@ const AboutSection = () => {
               </a>
 
               <a
-                href="/Umashankar_Ahirwar_9309942969.pdf" // replace with your resume path
+                href="/Umashankar_9309942969.pdf"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV
